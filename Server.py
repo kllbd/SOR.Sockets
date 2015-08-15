@@ -11,7 +11,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         hashnumber = md5.hexdigest()
         print("[{}] {} escreveu: {}".format(hashnumber, self.client_address[0], self.data.decode('ascii')))
         # print(self.data.decode('ascii'))
-        self.request.send("{} ({})".format(self.data.decode("ascii"), hashnumber).encode())
+        self.request.sendall("{} ({})".format(self.data.decode("ascii").upper(), hashnumber).encode())
 
 
 class Main:
