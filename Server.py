@@ -9,7 +9,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         md5 = hashlib.md5()
         md5.update(self.data)
         hashnumber = md5.hexdigest()
-        print("{} escreveu: {} ({})".format(self.client_address[0], self.data.decode('ascii'), hashnumber))
+        print("[{}] {} escreveu: {}".format(hashnumber, self.client_address[0], self.data.decode('ascii')))
         # print(self.data.decode('ascii'))
         self.request.send("{} ({})".format(self.data.decode("ascii"), hashnumber).encode())
 
